@@ -3,6 +3,18 @@ lastPositionX = -1;
 lastPositionY = -1;
 lastUpdateCount = 0;
 lastAddedItem = null;
+selectedColor = "#FF0000";
+var createItem = function(x,y,stop){
+  item = {
+      time: new Date().getTime(),
+      positionX: x,
+      positionY: y,
+      stop: stop,
+      color:selectedColor
+  }
+
+  return item;
+}
 
 var animate = function(){
   canvas = document.getElementById("canvas-interactive");
@@ -15,6 +27,7 @@ var animate = function(){
     {
       var ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, 800, 800);
+      ctx.fillStyle = "#FF0000"
       ctx.lineWidth = 3;
       ctx.beginPath();
       lastUpdateCount = drawPointsArray.length
@@ -47,13 +60,7 @@ Template.canvas.events({
     {
       distance = 5;
       if(lastAddedItem == null || lastAddedItem.positionX - event.offsetX > distance || lastAddedItem.positionX - event.offsetX < -distance || lastAddedItem.positionY - event.offsetY > distance || lastAddedItem.positionY - event.offsetY < -distance  ){
-        lastAddedItem = {
-          time: new Date().getTime(),
-          positionX: event.offsetX,
-          positionY: event.offsetY,
-          stop: false
-        };
-
+        lastAddedItem = createItem(event.offsetX,event.offsetY,false);
         DrawPoints.insert(lastAddedItem);
       }
     }
@@ -63,12 +70,12 @@ Template.canvas.events({
   },
   "mouseup #canvas-interactive": function (event, template) {
     click = false;
-    lastAddedItem = {
-      time: new Date().getTime(),
-      positionX: event.offsetX,
-      positionY: event.offsetY,
-      stop: true
-    }
+    lastAddedItem = createItem(event.offsetX,event.offsetY,true);
+    DrawPoints.insert(lastAddedItem);
+  },
+  "mouseleave #canvas-interactive": function (event, template) {
+    click = false;
+    lastAddedItem = createItem(event.offsetX,event.offsetY,true);
     DrawPoints.insert(lastAddedItem);
   }
 });
