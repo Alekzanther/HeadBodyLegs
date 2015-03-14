@@ -1,5 +1,8 @@
 <template name="canvas">
-  {{itemCount}}
+  {{#each pictures}}
+    {{points.length}}
+  {{/each}}
+  <input type="text" size=50 id="picName">
   <p class="dottedBorder">
     <canvas id="canvas-interactive" class="canvas" width="800" height="400"></canvas>
   </p>

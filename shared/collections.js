@@ -1,1 +1,1 @@
-DrawPoints = new Mongo.Collection("drawPoints");
+Pictures = new Mongo.Collection("pictures");
