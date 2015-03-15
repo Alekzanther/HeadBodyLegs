@@ -1,8 +1,10 @@
 <template name="canvas">
   {{#each pictures}}
-    {{points.length}}
+    Points {{points.length}}
   {{/each}}
-  <input type="text" size=50 id="picName">
+  <p>Picture name = <input type="text" size=50 id="picName"></p>
+  <p>Color = <input type="text" size=50 id="color"></p>
+  <p>Thickness = <input type="text" size=50 id="thickness"></p>
   <p class="dottedBorder">
     <canvas id="canvas-interactive" class="canvas" width="800" height="400"></canvas>
   </p>

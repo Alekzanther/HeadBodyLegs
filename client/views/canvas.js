@@ -3,15 +3,17 @@ lastx = -1;
 lasty = -1;
 lastUpdateCount = 0;
 lastAddedItem = null;
-selectedColor = "#FF0000";
+selectedColor = "#0000FF";
 currentPictureName = "";
+currentLineThickness = 3;
 var createItem = function(x,y,stop){
   item = {
       time: new Date().getTime(),
       x: x,
       y: y,
       stop: stop,
-      color:selectedColor
+      color:selectedColor,
+      thickness:currentLineThickness
   }
 
   return item;
@@ -35,23 +37,35 @@ var animate = function(){
     pic = Pictures.findOne({name: currentPictureName});
     if(pic != null)
     {
-      var points = pic.points
-      points = _.sortBy(points, function(o) { return o.time; })
+      var points = pic.points;
+      points = _.sortBy(points, function(o) { return o.time; });
 
       //Only redraw if there is a change in items
       if (lastUpdateCount != points.length)
       {
-        var ctx = canvas.getContext("2d");
+        ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, 800, 800);
-        ctx.fillStyle = "#FF0000"
         ctx.lineWidth = 3;
         ctx.beginPath();
+        lastColor = ""
+        lastThickness = "3"
         lastUpdateCount = points.length
         for (i = 0; i < points.length; i++) {
-          x =  points[i].x
-          y =  points[i].y
-
-          lastPoint = points[i - 1]
+          point = points[i];
+          x =  point.x;
+          y =  point.y;
+          color = point.color;
+          thickness = point.thickness;
+          if(lastColor != color || lastThickness != thickness){
+            ctx.stroke();
+            ctx.lineWidth = thickness;
+            console.log("change color or thickness");
+            ctx.strokeStyle = color;
+            ctx.beginPath();
+            lastColor = color;
+            lastThickness = thickness;
+          }
+          lastPoint = points[i - 1];
           if(lastx != -1 && lasty != -1){
             if(lastPoint != null && lastPoint.stop){
               ctx.moveTo(x,y);
@@ -61,8 +75,8 @@ var animate = function(){
             }
           }
 
-          lastx = x
-          lasty = y
+          lastx = x;
+          lasty = y;
         }
         ctx.stroke();
       }
@@ -103,6 +117,12 @@ Template.canvas.events({
   },
   "keyup #picName": function(event,template){
     currentPictureName = event.currentTarget.value;
+  },
+  "keyup #color": function(event,template){
+    selectedColor = event.currentTarget.value;
+  },
+  "keyup #thickness": function(event,template){
+    currentLineThickness = event.currentTarget.value;
   }
 });
 
