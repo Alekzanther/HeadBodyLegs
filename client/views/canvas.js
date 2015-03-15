@@ -1,6 +1,6 @@
 click = false;
-lastPositionX = -1;
-lastPositionY = -1;
+lastx = -1;
+lasty = -1;
 lastUpdateCount = 0;
 lastAddedItem = null;
 selectedColor = "#FF0000";
@@ -8,8 +8,8 @@ currentPictureName = "";
 var createItem = function(x,y,stop){
   item = {
       time: new Date().getTime(),
-      positionX: x,
-      positionY: y,
+      x: x,
+      y: y,
       stop: stop,
       color:selectedColor
   }
@@ -35,24 +35,25 @@ var animate = function(){
     pic = Pictures.findOne({name: currentPictureName});
     if(pic != null)
     {
-      var PicturesArray = pic.points
-      PicturesArray = _.sortBy(PicturesArray, function(o) { return o.time; })
+      var points = pic.points
+      points = _.sortBy(points, function(o) { return o.time; })
 
       //Only redraw if there is a change in items
-      if (lastUpdateCount != PicturesArray.length)
+      if (lastUpdateCount != points.length)
       {
         var ctx = canvas.getContext("2d");
         ctx.clearRect(0, 0, 800, 800);
         ctx.fillStyle = "#FF0000"
         ctx.lineWidth = 3;
         ctx.beginPath();
-        lastUpdateCount = PicturesArray.length
-        for (i = 0; i < PicturesArray.length; i++) {
-          x =  PicturesArray[i].positionX
-          y =  PicturesArray[i].positionY
+        lastUpdateCount = points.length
+        for (i = 0; i < points.length; i++) {
+          x =  points[i].x
+          y =  points[i].y
 
-          if(lastPositionX != -1 && lastPositionY != -1){
-            if(PicturesArray[i - 1] != null && PicturesArray[i - 1].stop){
+          lastPoint = points[i - 1]
+          if(lastx != -1 && lasty != -1){
+            if(lastPoint != null && lastPoint.stop){
               ctx.moveTo(x,y);
             }
             else{
@@ -60,13 +61,14 @@ var animate = function(){
             }
           }
 
-          lastPositionX = x
-          lastPositionY = y
+          lastx = x
+          lasty = y
         }
         ctx.stroke();
       }
     }
     else{
+      //Don't do this every time
       var ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, 800, 800);
     }
@@ -80,7 +82,7 @@ Template.canvas.events({
     if(click)
     {
       distance = 5;
-      if(lastAddedItem == null || lastAddedItem.positionX - event.offsetX > distance || lastAddedItem.positionX - event.offsetX < -distance || lastAddedItem.positionY - event.offsetY > distance || lastAddedItem.positionY - event.offsetY < -distance  ){
+      if(lastAddedItem == null || lastAddedItem.x - event.offsetX > distance || lastAddedItem.x - event.offsetX < -distance || lastAddedItem.y - event.offsetY > distance || lastAddedItem.y - event.offsetY < -distance  ){
         lastAddedItem = createItem(event.offsetX,event.offsetY,false);
         addPoint(lastAddedItem);
       }
@@ -106,6 +108,7 @@ Template.canvas.events({
 
 Template.canvas.helpers({
   pictures: function () {
-    return Pictures.find({name: currentPictureName});
+    //fix subscription to change when currentPicureName changes
+    return Pictures.find({name: currentPictureName});;
   }
 });

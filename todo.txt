@@ -1,0 +1,25 @@
+Lägg till så man kan ändra färg.
+Lägg till så man kan ändra tjocklek på linjen.
+Ändra så att min-distance mellan points är som tjockleken
+Lägg till sudda :/
+
+
+Lägg till användare
+Koppla bilder till användare
+Lås redigering av bilder till användare (och kompisar?)
+Visa alla bilder man gjort
+
+
+Lägg till så man kan ändra kroppsdel
+Lägg till hjälpliner till kroppsdel
+
+Lägg till generering av ihopsatt kropp
+
+Lägg till stöd för touch-ritning
+
+Lägg till uppspelning av målande
+
+Lägg till vy för "alla" pågående målningar realtidsuppdaterade
+
+
+Olika sorters bilder? bilar, fyrbenta djur m.m
