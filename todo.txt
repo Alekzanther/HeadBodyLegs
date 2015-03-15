@@ -9,11 +9,26 @@ Koppla bilder till användare
 Lås redigering av bilder till användare (och kompisar?)
 Visa alla bilder man gjort
 
-
 Lägg till så man kan ändra kroppsdel
 Lägg till hjälpliner till kroppsdel
 
 Lägg till generering av ihopsatt kropp
+
+Möjlighet att spara en generering
+
+Betygsätta användare, delar, genererade kroppar
+Kan endast rösta en gång
+{
+  head:_id,
+  body:_id,
+  legs:_id,
+  currentVoteValue: 1-5
+  votes: Array()
+  {
+    userId: _id,
+    value: 1-5
+  }
+}
 
 Lägg till stöd för touch-ritning
 
