@@ -6,6 +6,7 @@ lastAddedItem = null;
 selectedColor = "#0000FF";
 currentPictureName = "";
 currentLineThickness = 3;
+currentBodyPart = "head";
 var createItem = function(x,y,stop){
   item = {
       time: new Date().getTime(),
@@ -23,7 +24,7 @@ var addPoint = function(lastAddedItem){
   currentPicure = Pictures.findOne({name: currentPictureName});
   if(currentPicure == null){
     console.log("new picure");
-    Pictures.insert({name: currentPictureName, points: Array(), part: "head"})
+    Pictures.insert({name: currentPictureName, points: Array(), part: currentBodyPart})
     currentPicure = Pictures.findOne({name: currentPictureName});
   }
   Pictures.update({_id: currentPicure._id },{$push: {points:lastAddedItem}});
@@ -123,6 +124,9 @@ Template.canvas.events({
   },
   "keyup #thickness": function(event,template){
     currentLineThickness = event.currentTarget.value;
+  },
+  "keyup #bodyPart": function(event,template){
+    currentBodyPart = event.currentTarget.value;
   }
 });
 
