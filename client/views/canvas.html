@@ -3,9 +3,36 @@
     Points {{points.length}}
   {{/each}}
   <p>Picture name = <input type="text" size=50 id="picName"></p>
-  <p>Color = <input type="text" size=50 id="color"></p>
-  <p>Thickness = <input type="text" size=50 id="thickness"></p>
-  <p>Body part = <input type="text" size=50 id="bodyPart"></p>
+  <p>Color = <select id="color">
+    <option value="#F00">Red</option>
+    <option value="#0F0">Green</option>
+    <option value="#00F">Blue</option>
+    <option value="#FF0">Yellow</option>
+    <option value="#0FF">Turquoise</option>
+    <option value="#F0F">Purple</option>
+    <option value="#666">Gray</option>
+    <option value="#000">Black</option>
+    <option value="#FFF">White</option>
+  </select>
+</p>
+  <p>Thickness = <select id="thickness">
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="4">4</option>
+    <option value="8">8</option>
+    <option value="12">12</option>
+    <option value="16">16</option>
+    <option value="28">28</option>
+    <option value="44">44</option>
+  </select>
+</p>
+  <p>Body part =
+    <select id="bodyPart">
+      <option value="head">Head</option>
+      <option value="body">Body</option>
+      <option value="legs">Legs</option>
+    </select>
+  </p>
   <p class="dottedBorder">
     <canvas id="canvas-interactive" class="canvas" width="800" height="400"></canvas>
   </p>

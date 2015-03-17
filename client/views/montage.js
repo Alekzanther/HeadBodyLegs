@@ -50,7 +50,6 @@ first = true
 
 Template.montage.events({
   "mousemove .canvas": function (event, template) {
-    if (first){
       first = false;
       head = Pictures.findOne({name: "head"});
       body = Pictures.findOne({name: "body"});
@@ -59,6 +58,5 @@ Template.montage.events({
       drawPicture("canvas-body", body);
       drawPicture("canvas-legs", legs);
       console.log("move");
-    }
   }
 });

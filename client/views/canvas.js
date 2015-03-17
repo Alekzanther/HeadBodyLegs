@@ -3,9 +3,9 @@ lastx = -1;
 lasty = -1;
 lastUpdateCount = 0;
 lastAddedItem = null;
-selectedColor = "#0000FF";
+selectedColor = "#F00";
 currentPictureName = "";
-currentLineThickness = 3;
+currentLineThickness = 1;
 currentBodyPart = "head";
 var createItem = function(x,y,stop){
   item = {
@@ -119,13 +119,13 @@ Template.canvas.events({
   "keyup #picName": function(event,template){
     currentPictureName = event.currentTarget.value;
   },
-  "keyup #color": function(event,template){
+  "change #color": function(event,template){
     selectedColor = event.currentTarget.value;
   },
-  "keyup #thickness": function(event,template){
+  "change #thickness": function(event,template){
     currentLineThickness = event.currentTarget.value;
   },
-  "keyup #bodyPart": function(event,template){
+  "change #bodyPart": function(event,template){
     currentBodyPart = event.currentTarget.value;
   }
 });
