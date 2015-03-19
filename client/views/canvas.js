@@ -4,7 +4,6 @@ lasty = -1;
 lastUpdateCount = 0;
 lastAddedItem = null;
 selectedColor = "#F00";
-currentPictureName = "";
 currentLineThickness = 1;
 currentBodyPart = "head";
 var createItem = function(x,y,stop){
@@ -21,11 +20,11 @@ var createItem = function(x,y,stop){
 }
 
 var addPoint = function(lastAddedItem){
-  currentPicure = Pictures.findOne({name: currentPictureName});
+  currentPicure = Pictures.findOne({name: Session.get("currentPictureName")});
   if(currentPicure == null){
     console.log("new picure");
-    Pictures.insert({name: currentPictureName, points: Array(), part: currentBodyPart})
-    currentPicure = Pictures.findOne({name: currentPictureName});
+    Pictures.insert({name: Session.get("currentPictureName"), points: Array(), part: currentBodyPart})
+    currentPicure = Pictures.findOne({name: Session.get("currentPictureName")});
   }
   Pictures.update({_id: currentPicure._id },{$push: {points:lastAddedItem}});
 }
@@ -35,7 +34,7 @@ var animate = function(){
 
   if (canvas != null){
 
-    pic = Pictures.findOne({name: currentPictureName});
+    pic = Pictures.findOne({name: Session.get("currentPictureName")});
     if(pic != null)
     {
       var points = pic.points;
@@ -117,7 +116,8 @@ Template.canvas.events({
     addPoint(lastAddedItem);
   },
   "keyup #picName": function(event,template){
-    currentPictureName = event.currentTarget.value;
+    Session.set("currentPictureName", event.currentTarget.value);
+    //currentPictureName = ;
   },
   "change #color": function(event,template){
     selectedColor = event.currentTarget.value;
@@ -133,6 +133,6 @@ Template.canvas.events({
 Template.canvas.helpers({
   pictures: function () {
     //fix subscription to change when currentPicureName changes
-    return Pictures.find({name: currentPictureName});;
+    return Pictures.find({name: Session.get("currentPictureName")});;
   }
 });

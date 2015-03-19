@@ -1,6 +1,6 @@
-Lägg till så man kan ändra färg.
-Lägg till så man kan ändra tjocklek på linjen.
-Ändra så att min-distance mellan points är som tjockleken
+X - Lägg till så man kan ändra färg.
+X - Lägg till så man kan ändra tjocklek på linjen.
+/ - Ändra så att min-distance mellan points är som tjockleken
 Lägg till sudda :/
 
 
