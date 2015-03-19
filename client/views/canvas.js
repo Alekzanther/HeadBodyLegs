@@ -117,7 +117,6 @@ Template.canvas.events({
   },
   "keyup #picName": function(event,template){
     Session.set("currentPictureName", event.currentTarget.value);
-    //currentPictureName = ;
   },
   "change #color": function(event,template){
     selectedColor = event.currentTarget.value;
@@ -132,7 +131,6 @@ Template.canvas.events({
 
 Template.canvas.helpers({
   pictures: function () {
-    //fix subscription to change when currentPicureName changes
     return Pictures.find({name: Session.get("currentPictureName")});;
   }
 });

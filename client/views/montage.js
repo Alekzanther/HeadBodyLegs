@@ -51,9 +51,9 @@ first = true
 Template.montage.events({
   "mousemove .canvas": function (event, template) {
       first = false;
-      head = Pictures.findOne({name: "head"});
-      body = Pictures.findOne({name: "body"});
-      legs = Pictures.findOne({name: "legs"});
+      head = _.sample(Pictures.find({part: "head"}).fetch());
+      body = _.sample(Pictures.find({part: "body"}).fetch());
+      legs = _.sample(Pictures.find({part: "legs"}).fetch());
       drawPicture("canvas-head", head);
       drawPicture("canvas-body", body);
       drawPicture("canvas-legs", legs);
