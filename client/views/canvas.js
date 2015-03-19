@@ -6,6 +6,20 @@ lastAddedItem = null;
 selectedColor = "#F00";
 currentLineThickness = 1;
 currentBodyPart = "head";
+/*helpLinesHead = {
+  points: [
+    {
+      x: 2,
+      y: 1,
+    },{
+      x: 2,
+      y: 1,
+    },{
+      x: 2,
+      y: 1,
+    }
+  ]
+};*/
 var createItem = function(x,y,stop){
   item = {
       time: new Date().getTime(),
@@ -85,6 +99,61 @@ var animate = function(){
       //Don't do this every time
       var ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, 800, 800);
+    }
+
+    if(currentBodyPart == "head"){
+      ctx = canvas.getContext("2d");
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#FF0000";
+      ctx.beginPath();
+
+      ctx.moveTo(canvas.width / 2 - 25, canvas.height - 10);
+      ctx.lineTo(canvas.width / 2 - 25, canvas.height);
+      ctx.moveTo(canvas.width / 2 + 25, canvas.height - 10);
+      ctx.lineTo(canvas.width / 2 + 25, canvas.height);
+
+      ctx.stroke();
+    }
+    else if(currentBodyPart == "body"){
+      ctx = canvas.getContext("2d");
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#FF0000";
+      ctx.beginPath();
+
+      ctx.moveTo(canvas.width / 2 - 25, 0 + 10);
+      ctx.lineTo(canvas.width / 2 - 25, 0);
+      ctx.moveTo(canvas.width / 2 + 25, 0 + 10);
+      ctx.lineTo(canvas.width / 2 + 25, 0);
+
+      ctx.moveTo(canvas.width / 2 - 80, canvas.height - 10);
+      ctx.lineTo(canvas.width / 2 - 80, canvas.height);
+      ctx.moveTo(canvas.width / 2 - 10, canvas.height - 10);
+      ctx.lineTo(canvas.width / 2 - 10, canvas.height);
+
+      ctx.moveTo(canvas.width / 2 + 80, canvas.height - 10);
+      ctx.lineTo(canvas.width / 2 + 80, canvas.height);
+      ctx.moveTo(canvas.width / 2 + 10, canvas.height - 10);
+      ctx.lineTo(canvas.width / 2 + 10, canvas.height);
+
+      ctx.stroke();
+    }
+    else if(currentBodyPart == "legs"){
+      ctx = canvas.getContext("2d");
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "#FF0000";
+      ctx.beginPath();
+
+      ctx.moveTo(canvas.width / 2 - 80, 0 + 10);
+      ctx.lineTo(canvas.width / 2 - 80, 0);
+      ctx.moveTo(canvas.width / 2 - 10, 0 + 10);
+      ctx.lineTo(canvas.width / 2 - 10, 0);
+
+      ctx.moveTo(canvas.width / 2 + 80, 0 + 10);
+      ctx.lineTo(canvas.width / 2 + 80, 0);
+      ctx.moveTo(canvas.width / 2 + 10, 0 + 10);
+      ctx.lineTo(canvas.width / 2 + 10, 0);
+
+      ctx.stroke();
     }
   }
 	setTimeout(animate, 10);
