@@ -49,7 +49,7 @@ var drawPicture = function(elementId,pic){
 first = true
 
 Template.montage.events({
-  "mousemove .canvas": function (event, template) {
+  "click #generate": function (event, template) {
       first = false;
       head = _.sample(Pictures.find({part: "head"}).fetch());
       body = _.sample(Pictures.find({part: "body"}).fetch());
