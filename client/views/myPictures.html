@@ -1,0 +1,9 @@
+<template name="myPictures">
+  <input type="button" id="generate" value="Generate"/>
+  {{#each pictures}}
+    <div>
+      <canvas width="800" height="400" id="{{_id}}"></canvas>
+      <input type="button" id="{{_id}}" class="editPicture" value="Edit {{name}}"/>
+    </div>
+  {{/each}}
+</template>
