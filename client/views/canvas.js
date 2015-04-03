@@ -6,20 +6,8 @@ lastAddedItem = null;
 selectedColor = "#F00";
 currentLineThickness = 1;
 currentBodyPart = "head";
-/*helpLinesHead = {
-  points: [
-    {
-      x: 2,
-      y: 1,
-    },{
-      x: 2,
-      y: 1,
-    },{
-      x: 2,
-      y: 1,
-    }
-  ]
-};*/
+currentPictureId = null;
+
 var createItem = function(x,y,stop){
   item = {
       time: new Date().getTime(),
@@ -33,14 +21,26 @@ var createItem = function(x,y,stop){
   return item;
 }
 
+var createNewPicture = function(){
+
+  picture = Pictures.insert({
+    name: Session.get("currentPictureName"),
+    points: Array(),
+    part: currentBodyPart,
+    userId: Meteor.userId()
+  });
+  currentPictureId = picture;
+}
+
 var addPoint = function(lastAddedItem){
-  currentPicure = Pictures.findOne({name: Session.get("currentPictureName")});
-  if(currentPicure == null){
-    console.log("new picure");
-    Pictures.insert({name: Session.get("currentPictureName"), points: Array(), part: currentBodyPart})
-    currentPicure = Pictures.findOne({name: Session.get("currentPictureName")});
+  if(Meteor.userId() != null){
+    currentPicure = Pictures.findOne({_id: currentPictureId});
+    if(currentPicure == null){
+      createNewPicture();
+      currentPicure = Pictures.findOne({_id: currentPictureId});
+    }
+Pictures.update({_id: currentPicure._id },{$push: {points:lastAddedItem}});
   }
-  Pictures.update({_id: currentPicure._id },{$push: {points:lastAddedItem}});
 }
 
 var animate = function(){
@@ -48,7 +48,7 @@ var animate = function(){
 
   if (canvas != null){
 
-    pic = Pictures.findOne({name: Session.get("currentPictureName")});
+    pic = Pictures.findOne({_id: currentPictureId});
     if(pic != null)
     {
       var points = pic.points;
@@ -173,6 +173,10 @@ Template.canvas.events({
   },
   "mousedown #canvas-interactive": function (event, template) {
     click = true;
+    if(Meteor.userId() == null){
+      alert("Log in to draw");
+      console.log("log in to draw");
+    }
   },
   "mouseup #canvas-interactive": function (event, template) {
     click = false;
@@ -195,11 +199,21 @@ Template.canvas.events({
   },
   "change #bodyPart": function(event,template){
     currentBodyPart = event.currentTarget.value;
+  },
+  "click #newPicture": function(event,template){
+    createNewPicture();
   }
 });
 
 Template.canvas.helpers({
   pictures: function () {
-    return Pictures.find({name: Session.get("currentPictureName")});;
+    return Pictures.find({_id: currentPictureId});;
+  },
+  picture: function(){
+    if(this.testPic != null){
+      Session.set("currentPictureName", this.testPic.name);
+      currentPictureId = this.testPic._id;
+      return this.testPic;
+    }
   }
 });

@@ -2,7 +2,8 @@
   {{#each pictures}}
     Points {{points.length}}
   {{/each}}
-  <p>Picture name = <input type="text" size=50 id="picName"></p>
+  <input type="button" id="newPicture" value="New picture"/>
+  <p>Picture name = <input type="text" size=50 id="picName" value="{{picture.name}}"></p>
   <p>Color = <select id="color">
     <option value="#F00">Red</option>
     <option value="#0F0">Green</option>
