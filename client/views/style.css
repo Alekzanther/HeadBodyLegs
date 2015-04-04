@@ -1,8 +1,31 @@
 canvas{
   overflow: hidden;
 }
+.canvasStack {background:#FFFg;margin:0px;}
 
-p.dottedBorder {
-    border-style: dotted;
-    border-color: red;
+.dottedBorder {
+    border-style: solid;
+    border-color: #ee6e73;
+    padding:0px;
+}
+
+.disableScroll{
+      overflow-y:hidden;
+      overflow-x:hidden;
+}
+
+.row .col {
+  padding: 0.3rem;
+}
+
+.input-field label {
+  left: 0.3rem;
+}
+
+.select-wrapper {
+  margin-top:0px;
+}
+
+.row {
+  margin-bottom:0px;
 }

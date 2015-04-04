@@ -1,8 +1,14 @@
 <template name="montage">
   <input type="button" id="generate" value="Generate"/>
-  <p class="dottedBorder">
-    <canvas id="canvas-head" class="canvas" width="800" height="400"></canvas>
-    <canvas id="canvas-body" class="canvas" width="800" height="400"></canvas>
-    <canvas id="canvas-legs" class="canvas" width="800" height="400"></canvas>
-  </p>
+  <div class="dottedBorder">
+    <div class="canvasStack">
+      <canvas id="canvas-head" width="800" height="390"></canvas>
+    </div>
+    <div class="canvasStack">
+      <canvas id="canvas-body" width="800" height="390"></canvas>
+    </div>
+    <div class="canvasStack">
+      <canvas id="canvas-legs" width="800" height="390"></canvas>
+    </div>
+  </div>
 </template>

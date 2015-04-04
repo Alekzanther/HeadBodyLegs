@@ -1,0 +1,20 @@
+<template name="menu">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Huvud axlar knä och tår</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      <ul class="right hide-on-med-and-down">
+        <li><a class="active" href="/draw">Draw</a></li>
+        <li><a href="/montage">Montage</a></li>
+        <li><a href="/mypictures">My pictures</a></li>
+        <li>{{> loginButtons}}</li>
+      </ul>
+      <ul class="side-nav" id="mobile-demo">
+        <li><a href="/draw">Draw</a></li>
+        <li><a href="/montage">Montage</a></li>
+        <li><a href="/mypictures">My pictures</a></li>
+        <li>{{> loginButtons}}</li>
+      </ul>
+    </div>
+  </nav>
+</template>

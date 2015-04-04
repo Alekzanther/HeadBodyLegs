@@ -4,10 +4,10 @@ X - Lägg till så man kan ändra tjocklek på linjen.
 Lägg till sudda :/
 
 
-Lägg till användare
-Koppla bilder till användare
-Lås redigering av bilder till användare (och kompisar?)
-Visa alla bilder man gjort
+X - Lägg till användare
+X - Koppla bilder till användare
+X - Lås redigering av bilder till användare (och kompisar?)
+X - Visa alla bilder man gjort
 
 Lägg till så man kan ändra kroppsdel
 Lägg till hjälpliner till kroppsdel
@@ -38,3 +38,5 @@ Lägg till vy för "alla" pågående målningar realtidsuppdaterade
 
 
 Olika sorters bilder? bilar, fyrbenta djur m.m
+
+materialize scrollfire
