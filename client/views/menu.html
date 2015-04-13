@@ -1,18 +1,18 @@
 <template name="menu">
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">Huvud, axlar, knän, och tår</a>
+      <a href="#" class="brand-logo">{{_ "head_body_legs"}}</a>
       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
       <ul class="right hide-on-med-and-down">
-        <li><a class="active" href="/draw">Draw</a></li>
-        <li><a href="/montage">Montage</a></li>
-        <li><a href="/mypictures">My pictures</a></li>
+        <li><a class="active" href="/draw">{{_ "draw"}}</a></li>
+        <li><a href="/montage">{{_ "montage"}}</a></li>
+        <li><a href="/mypictures">{{_ "my_pics"}}</a></li>
         <li>{{> loginButtons}}</li>
       </ul>
       <ul class="side-nav" id="mobile-demo">
-        <li><a href="/draw">Draw</a></li>
-        <li><a href="/montage">Montage</a></li>
-        <li><a href="/mypictures">My pictures</a></li>
+        <li><a href="/draw">{{_ "draw"}}</a></li>
+        <li><a href="/montage">{{_ "montage"}}</a></li>
+        <li><a href="/mypictures">{{_ "my_pics"}}</a></li>
         <li>{{> loginButtons}}</li>
       </ul>
     </div>

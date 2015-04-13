@@ -1,0 +1,23 @@
+{
+  //menu stuff
+  "picture_name": "Bildnamn",
+  "head_body_legs": "Huvud, axlar, knän och tår",
+  "draw": "Rita",
+  "montage": "Montage",
+  "my_pics": "Mina bilder",
+  //colors
+  "red": "Röd",
+  "green": "Grön",
+  "blue": "Blå",
+  "yellow": "Gul",
+  "turquoise": "Turkos",
+  "purple": "Lila",
+  "gray": "Grå",
+  "black": "Svart",
+  "white": "Vit",
+  //Areas
+  "head": "Huvud",
+  "body": "Överkropp",
+  "legs": "Ben",
+  "body_part": "Kroppsdelar"
+}

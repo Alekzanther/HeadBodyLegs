@@ -1,0 +1,23 @@
+{
+    //menu stuff
+    "picture_name": "Picture name",
+    "head_body_legs": "Head, body, legs",
+    "draw": "Draw",
+    "montage": "Montage",
+    "my_pics": "My pictures",
+    //colors
+    "red": "Red",
+    "green": "Green",
+    "blue": "Blue",
+    "yellow": "Yellow",
+    "turquoise": "Turquoise",
+    "purple": "Purple",
+    "gray": "Gray",
+    "black": "Black",
+    "white": "White",
+    //Areas
+    "head": "Head",
+    "body": "Body",
+    "legs": "Legs",
+    "body_part": "Body part"
+}
